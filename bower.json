@@ -1,0 +1,20 @@
+{
+  "name": "react-weather-app",
+  "authors": [
+    "Manuel Emilio Urena <murena@intellisys.com.do>"
+  ],
+  "description": "",
+  "main": "app/index.html",
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.7"
+  }
+}
