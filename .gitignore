@@ -50,6 +50,7 @@ bower_components
 
 
 ### OSX ###
+dist
 *.DS_Store
 .AppleDouble
 .LSOverride
