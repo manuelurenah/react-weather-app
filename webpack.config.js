@@ -17,10 +17,13 @@ module.exports = {
   	},
 	module: {
 		loaders: [{
-			test:/\.js$/,
+			test:/\.jsx?$/,
 			exclude: [/node_modules/, /bower_components/],
 			loaders: ['react-hot', 'babel-loader']
 		}]
 	},
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
 	plugins: [HTMLWebpackPluginConfig]
 };
