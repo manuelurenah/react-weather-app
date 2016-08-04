@@ -1,7 +1,9 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {connect} from 'react-redux';
 import Winner from './Winner';
 
-export default function Results(props) {
+export function Results(props) {
     return (
         props.winner ?
         <Winner ref="winner" winner={props.winner} /> :
@@ -25,9 +27,21 @@ export default function Results(props) {
     );
 }
 
+Results.mixins = [PureRenderMixin];
+
 function getVotes(tally, entry) {
     if (tally && tally.has(entry)) {
         return tally.get(entry);
     }
     return 0;
 }
+
+function mapStateToProps(state) {
+    return {
+        pair: state.getIn(['vote', 'pair']),
+        tally: state.getIn(['vote', 'tally']),
+        winner: state.get('winner')
+    }
+}
+
+export const ResultsContainer = connect(mapStateToProps)(Results);

@@ -18,6 +18,8 @@ export default function Vote(props) {
     );
 }
 
+Vote.mixins = [PureRenderMixin];
+
 function hasVotedFor(props, entry) {
     return props.hasVoted === entry;
 }

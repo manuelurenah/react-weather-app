@@ -1,4 +1,5 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default function Winner(props) {
     return (
@@ -7,3 +8,5 @@ export default function Winner(props) {
         </div>
     );
 }
+
+Winner.mixins = [PureRenderMixin];
