@@ -10,9 +10,9 @@ const PropTypes = React.PropTypes;
 export function Voting(props) {
     return (
         <div>
-            {props.winner ?
-            <Winner ref="winner" winner={props.winner} /> :
-            <Vote {...props} />}
+            {props.winner
+                ? <Winner ref="winner" winner={props.winner}/>
+                : <Vote {...props}/>}
         </div>
     );
 }
@@ -26,7 +26,4 @@ function mapStateToProps(state) {
     };
 }
 
-export const VotingContainer = connect(
-    mapStateToProps,
-    actionCreators
-)(Voting);
+export const VotingContainer = connect(mapStateToProps, actionCreators)(Voting);

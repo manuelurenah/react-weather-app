@@ -1,4 +1,7 @@
-import {List, Map} from 'immutable';
+import {
+    List,
+    Map
+} from 'immutable';
 
 function setState(state, newState) {
     return state.merge(newState);
@@ -25,12 +28,12 @@ function resetVote(state) {
 
 export default function reducer(state = Map(), action) {
     switch (action.type) {
-    case 'SET_STATE':
-        return resetVote(setState(state, action.state));
-    case 'VOTE':
-        return vote(state, action.entry);
-    default:
-        break;
+        case 'SET_STATE':
+            return resetVote(setState(state, action.state));
+        case 'VOTE':
+            return vote(state, action.entry);
+        default:
+            break;
     }
     return state;
 }

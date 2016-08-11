@@ -1,15 +1,22 @@
-import {List, Map} from 'immutable';
+import {
+    List,
+    Map
+} from 'immutable';
 
 export const INITIAL_STATE = Map();
 
 export function setEntries(state, entries) {
-    return state.set('entries', List(entries));
+    const list = List(entries);
+    return state.set('entries', list);
 }
 
 export function next(state) {
-    const entries = state.get('entries').concat(getWinners(state.get('vote')));
+    const entries = state.get('entries')
+        .concat(getWinners(state.get('vote')));
     if (entries.size === 1) {
-        return state.remove('vote').remove('entries').set('winner', entries.first());
+        return state.remove('vote')
+            .remove('entries')
+            .set('winner', entries.first());
     } else {
         return state.merge({
             vote: Map({

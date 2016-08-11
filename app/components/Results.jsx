@@ -2,29 +2,26 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import Winner from './Winner';
+import * as actionCreators from '../src/action_creator'
 
 export function Results(props) {
-    return (
-        props.winner ?
-        <Winner ref="winner" winner={props.winner} /> :
-        <div className="results">
+    return (props.winner
+        ? <Winner ref="winner" winner={props.winner}/>
+        : <div className="results">
             <div className="tally">
-                {props.pair.map(entry =>
-                    <div key={entry} className="entry">
-                        <h1>{entry}</h1>
-                        <div className="voteCount">
-                            {getVotes(props.tally, entry)}
-                        </div>
+                {props.pair.map(entry => <div key={entry} className="entry">
+                    <h1>{entry}</h1>
+                    <div className="voteCount">
+                        {getVotes(props.tally, entry)}
                     </div>
-                )}
+                </div>)}
             </div>
             <div className="management">
                 <button ref="next" className="next" onClick={props.next}>
                     Next
                 </button>
             </div>
-        </div>
-    );
+        </div>);
 }
 
 Results.mixins = [PureRenderMixin];
@@ -44,4 +41,4 @@ function mapStateToProps(state) {
     }
 }
 
-export const ResultsContainer = connect(mapStateToProps)(Results);
+export const ResultsContainer = connect(mapStateToProps, actionCreators)(Results);
